@@ -63,7 +63,10 @@ export class AgregarComponent implements OnInit {
     if(this.heroe.id){
       /* Actualiza registro */
       this.heroesService.actualizarHeroe(this.heroe)
-          .subscribe(heroe => this.mostrarSnackBar('¡Registro Actualizado!'));
+          .subscribe(heroe => {
+            this.heroe = heroe;
+            this.mostrarSnackBar('¡Registro Actualizado!')
+          });
     } else {
       /* Crea registro */
       this.heroesService.agregarHereo(this.heroe)
