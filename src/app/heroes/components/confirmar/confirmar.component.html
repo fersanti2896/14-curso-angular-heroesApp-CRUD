@@ -1,0 +1,21 @@
+<h1>¿Estás seguro?</h1>
+<hr>
+<p>
+    Estás apunto de borrar ABC
+    <br>
+    ¿Deseas continuar?
+</p>
+
+<div>
+    <button mat-button
+            (click)="borrar()"
+            color="warn">
+        <mat-icon>delete</mat-icon>
+        Sí, borrar!
+    </button>
+    <button mat-button
+            (click)="cerrar()">
+        <mat-icon>not_interested</mat-icon>
+        Cancelar
+    </button>
+</div>

@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Heroe, Publisher } from '../../interface/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
 
 @Component({
   selector: 'app-agregar',
@@ -40,7 +42,8 @@ export class AgregarComponent implements OnInit {
   constructor(private heroesService: HeroesService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
@@ -64,6 +67,7 @@ export class AgregarComponent implements OnInit {
       /* Actualiza registro */
       this.heroesService.actualizarHeroe(this.heroe)
           .subscribe(heroe => {
+            /* Solo actualiza la imagen o los datos que se pasan */
             this.heroe = heroe;
             this.mostrarSnackBar('¡Registro Actualizado!')
           });
@@ -78,10 +82,13 @@ export class AgregarComponent implements OnInit {
   }
 
   borrarHeroe() {
-    this.heroesService.eliminarHeroe(this.heroe.id!)
-        .subscribe(resp => {
-          this.router.navigate(['/heroes'])
-        })
+    this.dialog.open(ConfirmarComponent, {
+      width: '300px'
+    })
+    // this.heroesService.eliminarHeroe(this.heroe.id!)
+    //     .subscribe(resp => {
+    //       this.router.navigate(['/heroes'])
+    //     })
   }
 
   mostrarSnackBar(mensaje: string) {
