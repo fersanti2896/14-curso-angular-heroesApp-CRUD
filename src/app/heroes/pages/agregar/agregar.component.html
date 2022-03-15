@@ -1,11 +1,16 @@
 
-<h1>Nuevo Héroe <small>{{ heroe.superhero }}</small></h1>
+<h1>
+    {{ (heroe.id) ? 'Editar' : 'Nuevo' }}
+    Héroe 
+    <small>{{ heroe.superhero }}</small>
+</h1>
 
 <div fxLayout="row"
      fxLayoutGap="40px"
      fxLayout.xs="column">
     <div fxFlex="50" 
-         fxLayout="column">
+         fxLayout="column"
+         class="animate__animated animate__fadeIn">
         <div fxLayout="row"
              fxLayout.lt-md="column" 
              fxLayoutGap="25px">
@@ -63,7 +68,7 @@
                     (click)="guardar()"
                     fxFlex="100">
                 <mat-icon>edit</mat-icon>
-                Guardar
+                {{ (heroe.id) ?  'Actualizar' : 'Crear' }}
             </button>
 
             <span class="spacer"></span>
@@ -79,6 +84,6 @@
         </div>
     </div>
     <div fxFlex="50">
-        <img [src]="heroe | imagen">
+        <img [src]="heroe | imagen" class="animate__animated animate__flipInX">
     </div>
 </div>

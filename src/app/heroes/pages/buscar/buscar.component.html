@@ -32,7 +32,7 @@
       <pre>{{ heroeSeleccionado | json }}</pre>
     </div>
 
-    <div *ngIf="heroeSeleccionado">
+    <div *ngIf="heroeSeleccionado" class="animate__animated animate__flipInX">
       <app-heroe-tarjeta [heroe]="heroeSeleccionado"></app-heroe-tarjeta>
     </div>
 </div>

@@ -12,13 +12,13 @@
             <h1>{{ heroe.superhero }} <small> {{ heroe.alter_ego }}</small></h1>
             <mat-divider></mat-divider>
             <br>
-            <img [src]="heroe | imagen">
+            <img [src]="heroe | imagen" class="animate__animated animate__flipInX">
         </div>
         <div fxFlex="50">
             <h1>{{ heroe.publisher }}</h1>
             <mat-divider></mat-divider>
     
-            <mat-list>
+            <mat-list class="animate__animated animate__flipInX">
                 <mat-list-item>{{ heroe.first_appearance }}</mat-list-item>
                 <mat-list-item>{{ heroe.characters }}</mat-list-item>
                 <mat-list-item>{{ heroe.publisher }}</mat-list-item>
